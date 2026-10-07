@@ -1,0 +1,103 @@
+.section { max-width: 1540px; margin: 110px auto 50px; padding: 35px 42px 30px; border-radius: 28px; background: var(--brand); color: #fcfff3; overflow: hidden; }
+.topLine { display: flex; justify-content: space-between; gap: 18px; border-bottom: 1px solid #c8dbc52c; padding-bottom: 24px; font-size: 9px; letter-spacing: .12em; }
+.topLine span:last-child { color: #b3cbbd; letter-spacing: 0; font-size: 12px; }
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 7%; padding: 52px 0 70px; align-items: center; }
+.label { display: inline-block; font-size: 9px; letter-spacing: .09em; color: #d6e9c0; margin-bottom: 22px; }
+.copy h2 { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(40px, 4.7vw, 70px); line-height: 1.04; letter-spacing: -.045em; font-weight: 500; margin: 0 0 25px; }
+.copy h2 > span { color: #d5e8b3; }
+.copy > p { max-width: 475px; color: #c4d7cd; font-size: 15px; line-height: 1.75; margin: 0 0 29px; }
+.cta { display: inline-flex; gap: 28px; align-items: center; background: #dcecbc; color: var(--brand); padding: 17px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+.cta:hover { background: #eff7dd; }
+.cta > span { font-size: 20px; }
+.microcopy { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 22px; font-size: 7px; letter-spacing: .09em; color: #8eafa0; }
+.visual { position: relative; padding: 12px 9px 15px; }
+.photo { transform: rotate(3deg); background: #fffdf2; padding: 11px 11px 0; border-radius: 5px; box-shadow: 0 23px 45px #06292040; }
+.image { position: relative; aspect-ratio: 1.12; overflow: hidden; }
+.image img { object-fit: cover; object-position: center; }
+.photoFooter { min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 6px; letter-spacing: .06em; color: #50705e; }
+.sticker { position: absolute; bottom: -15px; left: -24px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 154px; height: 154px; background: #e8edbe; border: 1px solid #d7e0af; outline: 1px dashed #124c4450; outline-offset: -8px; color: var(--brand); border-radius: 50%; transform: rotate(-12deg); box-shadow: 0 6px 20px #06292025; }
+.sticker > span { font-size: 6px; letter-spacing: .08em; }
+.sticker strong { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: 29px; line-height: .97; letter-spacing: -.04em; font-weight: 500; text-align: center; margin: 10px 0; }
+.imageNote { display: block; text-align: right; color: #94b3a3; font-size: 8px; margin-top: 22px; }
+.guide { background: #f4f5ec; color: var(--brand); border-radius: 20px; padding: 24px 28px 18px; }
+.guideHeading { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding-bottom: 22px; font-size: 8px; letter-spacing: .1em; }
+.guideHeading > span:last-child { color: #778b7d; font-size: 11px; letter-spacing: 0; }
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.steps button { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; border: 1px solid #dce4d7; background: transparent; border-radius: 11px; color: var(--brand); text-align: left; transition: background .2s, color .2s; }
+.steps button:hover { background: #e3ebd6; }
+.steps button.active { background: var(--brand); border-color: var(--brand); color: #f9ffed; }
+.stepNumber { font-size: 9px; opacity: .65; }
+.steps strong { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: 25px; line-height: 1; font-weight: 500; letter-spacing: -.04em; }
+.stepShort { font-size: 9px; opacity: .65; }
+.detail { display: grid; grid-template-columns: 1.15fr 1fr auto; align-items: center; gap: 6%; padding: 30px 0 25px; }
+.detailCopy { animation: appear .25s ease; }
+.detailLabel { font-size: 8px; letter-spacing: .12em; color: #7a8e7f; }
+.detail h3 { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(24px, 2.3vw, 34px); line-height: 1.1; font-weight: 500; letter-spacing: -.035em; margin: 12px 0; }
+.detail p { color: #657b6c; font-size: 13px; line-height: 1.65; margin: 0; }
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; align-items: center; gap: 13px; padding: 13px 0; border-bottom: 1px solid #dce4d7; font-size: 12px; line-height: 1.4; }
+.checklist li:first-child { padding-top: 0; }
+.checklist li:last-child { border-bottom: 0; padding-bottom: 0; }
+.checklist li > span { font-size: 8px; color: #95a68d; }
+.next { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid #bacbb6; border-radius: 50%; background: transparent; color: var(--brand); font-size: 23px; }
+.next:hover { background: #dfebc9; }
+.guideFooter { display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid #dce4d7; color: #7a8e7f; font-size: 9px; }
+.guideFooter > span:last-child { color: var(--brand); font-size: 11px; }
+.outOf { color: #94a48e; }
+@keyframes appear { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1000px) { .section { padding: 28px; } .hero { gap: 5%; } .copy h2 { font-size: 44px; } .copy > p { font-size: 14px; } .sticker { height: 122px; width: 122px; left: -10px; } .sticker strong { font-size: 24px; } .sticker > span { font-size: 5px; } .steps button { padding: 13px; } .steps strong { font-size: 22px; } .stepShort { font-size: 8px; } .detail { gap: 4%; } }
+@media (max-width: 800px) { .section { margin-top: 70px; padding: 25px 20px 20px; border-radius: 22px; } .topLine { font-size: 8px; } .topLine span:last-child { display: none; } .hero { grid-template-columns: 1fr; gap: 38px; padding: 34px 0 52px; } .label { font-size: 8px; margin-bottom: 18px; } .copy h2 { font-size: clamp(37px, 8vw, 56px); } .copy > p { max-width: 560px; font-size: 14px; } .cta { gap: 16px; padding: 15px 19px; font-size: 11px; } .visual { max-width: 520px; width: 100%; margin: auto; padding: 0 8px 12px; } .sticker { left: -7px; bottom: 0; } .photoFooter { font-size: 5px; } .guide { padding: 20px 16px 16px; } .guideHeading { display: block; font-size: 8px; line-height: 1.7; } .guideHeading > span:last-child { display: block; font-size: 10px; } .steps { grid-template-columns: repeat(5, minmax(92px, 1fr)); overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: #b2c6a4 transparent; } .steps button { min-height: 108px; padding: 12px; gap: 10px; } .steps strong { font-size: 20px; } .stepShort { font-size: 8px; line-height: 1.35; } .detail { grid-template-columns: 1fr auto; gap: 22px 14px; padding: 24px 0; } .detailCopy { grid-column: 1 / -1; } .detail h3 { font-size: 28px; } .detail p { font-size: 13px; } .checklist li { font-size: 11px; gap: 9px; } .next { width: 36px; height: 36px; } .guideFooter { font-size: 8px; gap: 12px; } }
+@media (prefers-reduced-motion: reduce) { .detailCopy { animation: none; } .steps button { transition: none; } }
+
+/* An illustrated, tactile journey from discovery to move-in. */
+.guide { padding: 34px 30px 20px; scroll-margin-top: 20px; }
+.guideHeading { align-items: end; padding-bottom: 26px; }
+.guideHeading h3 { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(30px, 3.3vw, 47px); line-height: 1.04; letter-spacing: -.04em; font-weight: 500; margin: 14px 0 0; }
+.guideHeading h3 em { font-style: normal; color: #8c9f78; }
+.guideHeading > p { font-size: 13px; color: #70846f; line-height: 1.6; letter-spacing: 0; margin: 0 0 3px; }
+.steps { gap: 12px; padding: 4px 0 12px; }
+.steps button { position: relative; align-items: center; text-align: center; padding: 19px 12px 21px; gap: 8px; border-radius: 18px; background: #f8f8f0; border-color: #e1e6d8; transition: transform .25s, background .25s, box-shadow .25s; }
+.steps button:hover { transform: translateY(-5px) rotate(-1deg); background: #ebefd9; }
+.steps button.active { background: #e5edce; color: var(--brand); border-color: #a3b785; box-shadow: 0 6px 0 #ccd9b1; transform: translateY(-3px); }
+.stepNumber { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #ffffff99; opacity: 1; font-size: 9px; color: #7c8f70; z-index: 1; }
+.stepArt, .largeArt { display: block; background-image: url('/student-journey-illustrations-transparent.png'); background-repeat: no-repeat; background-size: 500% auto; }
+.stepArt { width: 100%; max-width: 150px; aspect-ratio: 1; transition: transform .3s; }
+.steps button:hover .stepArt { transform: rotate(3deg) scale(1.06); }
+.steps strong { font-size: 27px; }
+.stepShort { font-size: 10px; line-height: 1.45; opacity: .7; }
+.detail { position: relative; grid-template-columns: .75fr 1.05fr 1fr; gap: 30px; margin-top: 24px; padding: 22px 24px 30px; background: #fffef6; border: 1px solid #e3e7d8; border-radius: 20px; }
+.detailVisual { position: relative; text-align: center; padding-top: 27px; }
+.artStamp { display: inline-block; position: absolute; left: 50%; top: 0; transform: translateX(-50%) rotate(-6deg); white-space: nowrap; padding: 7px 12px; border: 1px dashed #adc295; border-radius: 5px; background: #edf1d8; font-size: 8px; letter-spacing: .09em; }
+.largeArt { width: 100%; max-width: 235px; aspect-ratio: 1; margin: auto; animation: objectArrival .4s ease; }
+.artCaption { display: inline-block; transform: rotate(-3deg); font-family: var(--font-varela-round), sans-serif; font-size: 10px; color: #7c8f70; }
+.detail h3 { font-size: clamp(24px, 2.3vw, 33px); }
+.detail p { font-size: 13px; }
+.checklist { padding-bottom: 34px; }
+.checklist li { margin: 7px 0; padding: 12px !important; border: 1px solid #e0e7d7 !important; background: #f6f7ed; border-radius: 9px; font-size: 11px; }
+.checklist li > span { display: grid; place-items: center; flex: none; width: 22px; height: 22px; background: #e4eccf; color: #70835c; border-radius: 50%; }
+.next { position: absolute; right: 24px; bottom: 18px; width: 36px; height: 36px; background: var(--brand); color: #f8ffe9; border: 0; }
+.next:hover { background: #236d59; }
+.guideFooter { border-top: 0; padding-top: 20px; }
+@keyframes objectArrival { from { opacity: .3; transform: rotate(-7deg) scale(.9); } to { opacity: 1; transform: rotate(0) scale(1); } }
+@media (max-width: 1000px) { .detail { gap: 20px; padding: 20px; } .steps { gap: 8px; } .steps strong { font-size: 23px; } .stepShort { font-size: 9px; } .detail h3 { font-size: 25px; } }
+@media (max-width: 800px) {
+ .guide { padding: 25px 16px 18px; }
+ .guideHeading { display: flex; align-items: end; gap: 16px; }
+ .guideHeading h3 { font-size: 32px; }
+ .guideHeading > p { font-size: 10px; max-width: 110px; }
+ .steps { grid-template-columns: repeat(5, 135px); padding: 7px 2px 14px; }
+ .steps button { min-height: 204px; padding: 24px 10px 17px; }
+ .stepArt { width: 115px; }
+ .steps strong { font-size: 23px; }
+ .stepShort { font-size: 9px; }
+ .detail { grid-template-columns: 1fr; gap: 22px; padding: 22px 18px 58px; }
+ .detailVisual { grid-column: 1; }
+ .largeArt { max-width: 190px; }
+ .detailCopy { grid-column: 1; }
+ .detail h3 { font-size: 29px; }
+ .checklist { padding: 0; }
+ .checklist li { font-size: 11px; }
+ .next { right: 18px; bottom: 15px; }
+}
+@media (max-width: 420px) { .guideHeading > p { display: none; } }
+@media (prefers-reduced-motion: reduce) { .largeArt { animation: none; } .stepArt, .steps button { transition: none; } .steps button:hover, .steps button:hover .stepArt { transform: none; } }

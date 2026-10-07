@@ -1,0 +1,17 @@
+.journey { display: flex; flex-direction: column; gap: 18px; padding: clamp(20px, 3vw, 40px); border-radius: 28px; background: #f4f5ee; color: var(--brand); }
+.track { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.track::before, .trackFill { content: ""; position: absolute; left: 10%; right: 10%; top: 26px; height: 3px; border-radius: 3px; background: #dce3d2; }
+.trackFill { right: auto; max-width: 80%; background: var(--brand); transition: width .6s cubic-bezier(.2,.8,.2,1); width: 0; }
+.track button { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0; border: 0; background: none; color: #6d8276; font-size: 13px; }
+.track button > span { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: #fff; border: 2px solid #dce3d2; transition: background .3s, border-color .3s, transform .3s, color .3s; }
+.reached > span { border-color: var(--brand) !important; }
+.track button[aria-selected="true"] { color: var(--brand); font-weight: 600; }
+.track button[aria-selected="true"] > span { background: var(--brand); color: #e5edc6; transform: scale(1.12); }
+.stage { display: flex; align-items: center; gap: 28px; padding: 28px; border-radius: 22px; background: var(--brand); color: #f6f7e9; animation: slide .5s cubic-bezier(.2,.8,.2,1); }
+.stageNumber { font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(60px, 7vw, 110px); line-height: .9; letter-spacing: -.06em; color: #e3ebc7; }
+.stage h3 { margin: 0 0 8px; font-family: var(--font-bricolage-grotesque), sans-serif; font-weight: 500; font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -.04em; }
+.stage p { margin: 0; max-width: 560px; color: #c3d6cb; font-size: 16px; line-height: 1.6; }
+.track button:focus-visible { outline: 3px solid #9bb67e; outline-offset: 4px; border-radius: 12px; }
+@keyframes slide { from { opacity: 0; transform: translateX(20px); } }
+@media (max-width: 700px) { .track { grid-template-columns: repeat(5, minmax(54px, 1fr)); font-size: 10px; } .track button { font-size: 10px; } .track button > span { width: 42px; height: 42px; } .track::before, .trackFill { top: 20px; } .stage { flex-direction: column; align-items: flex-start; gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { .stage { animation: none; } .trackFill { transition: none; } }

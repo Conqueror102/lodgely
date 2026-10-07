@@ -1,0 +1,34 @@
+.picker { display: grid; grid-template-columns: 320px 1fr; gap: 16px; color: var(--brand); }
+.uniList { display: flex; flex-direction: column; gap: 8px; }
+.uniList button { display: flex; align-items: center; gap: 14px; padding: 14px; border: 1px solid #e1e7da; border-radius: 20px; background: #fff; color: inherit; text-align: left; transition: background .25s, transform .25s, border-color .25s; }
+.uniList button:hover { transform: translateX(4px); border-color: #b4c691; }
+.uniList button[aria-pressed="true"] { background: var(--brand); color: #f6f7e9; border-color: var(--brand); }
+.uniShort { display: grid; place-items: center; min-width: 64px; height: 52px; padding: 0 8px; border-radius: 15px; background: #e8efde; color: var(--brand); font-family: var(--font-bricolage-grotesque), sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -.02em; }
+[aria-pressed="true"] .uniShort { background: #e3ebc7; }
+.uniName { display: flex; flex-direction: column; gap: 3px; font-size: 14px; font-weight: 500; }
+.uniName small { font-size: 11px; font-weight: 400; opacity: .7; }
+.pickerBody { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px; border-radius: 26px; background: #f4f5ee; animation: rise .45s cubic-bezier(.2,.8,.2,1); }
+.radar { position: relative; aspect-ratio: 1; container-type: inline-size; border-radius: 50%; background: radial-gradient(circle, #e3ebc7 0, #e8efde 60%, #dfe7d6 100%); overflow: hidden; }
+.radarCampus { position: absolute; z-index: 3; left: 50%; top: 50%; display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 100px; background: var(--brand); color: #e5edc6; font-weight: 600; font-size: 13px; transform: translate(-50%, -50%); box-shadow: 0 0 0 10px #124c441a; }
+.radarRing { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px dashed #8ca496; transform: translate(-50%, -50%); }
+.radarRing small { position: absolute; left: 50%; top: -9px; transform: translateX(-50%); padding: 1px 6px; border-radius: 100px; background: #f4f5ee; font-size: 9px; color: #6d8276; }
+.radarDot { --angle: 0deg; --dist: 20; position: absolute; z-index: 2; left: 50%; top: 50%; padding: 6px 10px; border-radius: 100px; background: #fffef5; font-size: 11px; font-weight: 600; box-shadow: 0 6px 14px #124c4422; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--dist) * -1cqw)) rotate(calc(var(--angle) * -1)); animation: land .7s cubic-bezier(.2,.8,.2,1) both; white-space: nowrap; }
+.radarSweep { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, #74935e40, transparent 22%); animation: sweep 5s linear infinite; }
+.pickerInfo { display: flex; flex-direction: column; gap: 12px; padding: 10px 6px; }
+.label { font-size: 10px; letter-spacing: .13em; font-weight: 600; color: #74935e; }
+.pickerInfo h3 { margin: 0; font-family: var(--font-bricolage-grotesque), sans-serif; font-weight: 500; font-size: clamp(28px, 2.6vw, 42px); letter-spacing: -.045em; line-height: 1.05; }
+.pickerInfo p { margin: 0; color: #4f6b5f; font-size: 14px; line-height: 1.7; }
+.areas { display: flex; flex-wrap: wrap; gap: 6px; }
+.areas span { padding: 7px 12px; border-radius: 100px; background: #fff; font-size: 12px; }
+.pickerLinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.dark, .ghostLink { display: inline-flex; align-items: center; gap: 16px; padding: 13px 18px; border-radius: 100px; font-size: 12px; }
+.dark { background: var(--brand); color: #fff; }
+.ghostLink { border: 1px solid #c6d0ba; }
+.pickerListings { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.picker button:focus-visible, .picker a:focus-visible { outline: 3px solid #9bb67e; outline-offset: 3px; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes sweep { to { transform: rotate(360deg); } }
+@keyframes land { from { opacity: 0; transform: translate(-50%, -50%) scale(.4); } }
+@media (max-width: 1100px) { .picker { grid-template-columns: 1fr; } .uniList { flex-direction: row; overflow-x: auto; padding-bottom: 4px; } .uniList button { flex: none; } .uniName small { display: none; } }
+@media (max-width: 800px) { .pickerBody { grid-template-columns: 1fr; } .pickerListings { grid-template-columns: 1fr; } .radar { max-width: 360px; width: 100%; margin: 0 auto; } }
+@media (prefers-reduced-motion: reduce) { .radarSweep, .radarDot, .pickerBody { animation: none; } }

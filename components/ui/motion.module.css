@@ -1,0 +1,4 @@
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1) var(--delay, 0ms), transform .8s cubic-bezier(.2,.7,.2,1) var(--delay, 0ms); }
+.reveal[data-visible="true"] { opacity: 1; transform: none; }
+.tilt { --rx: 0deg; --ry: 0deg; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .25s ease-out; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .tilt { transform: none; } }

@@ -1,0 +1,20 @@
+.campusCard { position: relative; flex: 1; display: flex; flex-direction: column; gap: 14px; min-height: 420px; padding: 34px; border-radius: 120px 24px 24px 24px; background: var(--brand); color: #f6f7e9; overflow: hidden; isolation: isolate; }
+.badge { display: grid; place-items: center; width: 70px; height: 70px; margin-left: auto; border-radius: 50%; background: #edc5a3; color: var(--brand); transform: rotate(-8deg); }
+.short { font-family: var(--font-bricolage-grotesque), sans-serif; font-weight: 600; font-size: clamp(60px, 7vw, 110px); letter-spacing: -.07em; line-height: .9; color: #e3ebc7; }
+.campusCard dl { margin: auto 0 0; display: grid; gap: 0; }
+.campusCard dl > div { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid #ffffff1f; font-size: 14px; }
+.campusCard dt { color: #a8c2b5; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding-top: 2px; }
+.campusCard dd { margin: 0; }
+.campusCard dd a { text-decoration: underline; text-underline-offset: 4px; }
+.orbit { position: absolute; z-index: -1; right: -120px; top: -120px; width: 380px; height: 380px; border-radius: 50%; border: 1px dashed #ffffff30; animation: spin 40s linear infinite; }
+.orbit::after { content: ""; position: absolute; left: 50%; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #edc5a3; }
+.areas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.area { display: flex; flex-direction: column; gap: 30px; padding: 22px; border-radius: 22px; background: #f3f2e9; color: var(--brand); font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(26px, 2.4vw, 38px); letter-spacing: -.045em; transition: background .3s, color .3s, transform .3s; position: relative; }
+.area span { font-family: var(--font-dm-sans), sans-serif; font-size: 12px; letter-spacing: 0; color: #74935e; }
+.area em { position: absolute; right: 20px; top: 20px; font-style: normal; font-size: 20px; transition: transform .3s; }
+.area:hover { background: var(--brand); color: #fff; transform: translateY(-4px); }
+.area:hover em { transform: rotate(45deg); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 900px) { .areas { grid-template-columns: 1fr 1fr; } .campusCard { border-top-left-radius: 80px; padding: 26px; } .campusCard dl > div { grid-template-columns: 1fr; gap: 4px; } }
+@media (prefers-reduced-motion: reduce) { .orbit { animation: none; } }

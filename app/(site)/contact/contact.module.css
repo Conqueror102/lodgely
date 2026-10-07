@@ -1,0 +1,15 @@
+.tabs { display: grid; grid-template-columns: 300px 1fr; gap: 16px; color: var(--brand); scroll-margin-top: 110px; }
+.tabList { display: flex; flex-direction: column; gap: 8px; }
+.tabList button { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid #e1e7da; border-radius: 20px; background: #fff; color: inherit; text-align: left; font-size: 15px; transition: background .25s, transform .25s; }
+.tabList button:hover { transform: translateX(4px); }
+.tabList button > span { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 15px; background: #e8efde; flex: none; transition: transform .3s; }
+.tabList strong { font-weight: 500; }
+.tabList button[aria-selected="true"] { background: var(--brand); color: #f6f7e9; border-color: var(--brand); }
+.tabList button[aria-selected="true"] > span { background: #e3ebc7; color: var(--brand); transform: rotate(-8deg); }
+.tabPanel { display: flex; flex-direction: column; gap: 10px; padding: clamp(22px, 3vw, 42px); border-radius: 28px; background: #f4f5ee; animation: rise .45s cubic-bezier(.2,.8,.2,1); }
+.tabPanel h2 { margin: 0; font-family: var(--font-bricolage-grotesque), sans-serif; font-weight: 500; font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; }
+.tabPanel > p { margin: 0 0 14px; color: #5d7666; font-size: 15px; }
+.tabList button:focus-visible { outline: 3px solid #9bb67e; outline-offset: 3px; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+@media (max-width: 900px) { .tabs { grid-template-columns: 1fr; } .tabList { flex-direction: row; overflow-x: auto; } .tabList button { flex: none; } }
+@media (prefers-reduced-motion: reduce) { .tabPanel { animation: none; } }

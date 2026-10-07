@@ -1,0 +1,33 @@
+.section { max-width:1540px; margin:105px auto 70px; padding:0 42px; display:grid; grid-template-columns:.8fr 1.25fr; gap:9%; color:var(--brand); }
+.eyebrow { font-size:9px; letter-spacing:.12em; }
+.intro h2 { font-family:var(--font-bricolage-grotesque),sans-serif; font-size:clamp(42px,4.6vw,66px); line-height:1.03; letter-spacing:-.045em; font-weight:500; margin:25px 0; }
+.intro h2 em { font-style:normal; color:#859b7b; }
+.intro > p { font-size:14px; line-height:1.8; color:#76897c; }
+.questionArt { position:relative; height:215px; max-width:340px; margin-top:25px; }
+.backBubble { position:absolute; left:5px; top:30px; width:156px; height:93px; border-radius:30px 30px 6px 30px; display:grid; place-items:center; font-family:var(--font-bricolage-grotesque),sans-serif; font-size:38px; letter-spacing:-.04em; color:var(--brand); background:#e6edc7; transform:rotate(-9deg); }
+.frontBubble { position:absolute; left:136px; top:10px; width:109px; height:122px; border-radius:35px 35px 35px 7px; background:var(--brand); color:#f2f6df; font-family:var(--font-bricolage-grotesque),sans-serif; font-size:85px; display:grid; place-items:center; transform:rotate(10deg); box-shadow:8px 9px 0 #edf1e7; }
+.littleStar { position:absolute; left:258px; top:113px; font-size:39px; color:#c6a988; transform:rotate(15deg); }
+.artNote { position:absolute; left:30px; top:150px; font-size:11px; line-height:1.6; color:#859079; transform:rotate(-4deg); }
+.start { display:inline-flex; gap:24px; align-items:center; font-size:12px; padding-bottom:9px; border-bottom:1px solid #c3d0be; }
+.start > span { font-size:22px; }
+.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+.filters button { border:1px solid #dbe2d6; border-radius:40px; background:#f8f9f3; color:var(--brand); padding:11px 15px; font-size:11px; cursor:pointer; transition:background .2s; }
+.filters .selected { background:var(--brand); border-color:var(--brand); color:#fff; }
+.filters button:not(.selected):hover { background:#e7eed7; }
+.results { display:flex; justify-content:space-between; color:#8a9981; font-size:10px; padding:0 4px 12px; }
+.list { display:grid; gap:10px; }
+.item { border:1px solid #e0e5d8; border-radius:17px; background:#f6f7f0; overflow:hidden; transition:background .2s; }
+.expanded { background:#e7eed8; border-color:#d2ddc1; }
+.item h3 { margin:0; }
+.item h3 button { display:flex; align-items:center; gap:16px; border:0; width:100%; background:none; text-align:left; color:var(--brand); padding:21px 20px; font-family:var(--font-bricolage-grotesque),sans-serif; font-size:18px; line-height:1.4; font-weight:500; cursor:pointer; }
+.number { flex:none; font-family:var(--font-dm-sans),sans-serif; font-size:9px; color:#8b9a80; }
+.toggle { display:grid; place-items:center; flex:none; margin-left:auto; width:29px; height:29px; border-radius:50%; border:1px solid #b9c9aa; font-size:20px; font-weight:400; }
+.expanded .toggle { background:var(--brand); border-color:var(--brand); color:#fff; }
+.answer p { margin:0; padding:0 60px 25px 49px; font-size:13px; line-height:1.8; color:#627969; animation:reveal .25s ease; }
+.bottom { display:flex; align-items:center; justify-content:space-between; margin-top:20px; font-size:8px; letter-spacing:.09em; color:#8b9a80; }
+.bottom > span:last-child { font-size:25px; color:var(--brand); }
+.filters button:focus-visible,.item button:focus-visible,.start:focus-visible { outline:3px solid #95ad75; outline-offset:-3px; }
+@keyframes reveal { from { opacity:.3; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:1000px) { .section { padding:0 26px; gap:5%; } .filters button { padding:10px 12px; font-size:10px; } .item h3 button { font-size:16px; padding:18px 16px; gap:12px; } .answer p { padding:0 25px 22px 42px; } }
+@media(max-width:800px) { .section { grid-template-columns:1fr; gap:32px; padding:0 16px; margin-top:65px; } .intro h2 { font-size:45px; } .intro h2 em br { display:none; } .intro > p { font-size:13px; } .questionArt { height:185px; margin-top:15px; } .backBubble { width:135px; height:80px; font-size:32px; } .frontBubble { left:119px; width:90px; height:105px; font-size:70px; } .littleStar { left:222px; top:104px; font-size:31px; } .artNote { top:133px; } .filters { gap:7px; } .filters button { padding:10px 13px; font-size:11px; } .item h3 button { font-size:17px; } .answer p { font-size:13px; } }
+@media(prefers-reduced-motion:reduce) { .answer p { animation:none; } .item,.filters button { transition:none; } }
