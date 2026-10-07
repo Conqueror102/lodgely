@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import Logo from "@/components/ui/logo";
 import "@/components/layout/motion-layer.css";
@@ -61,6 +61,7 @@ function direction(element: HTMLElement) {
 /** Site-wide motion: scroll reveals, a page curtain, magnetic buttons, click bursts, a cursor halo and image parallax. */
 export default function MotionLayer() {
   const pathname = usePathname();
+  const router = useRouter();
   const curtain = useRef<HTMLDivElement>(null);
   const cursor = useRef<HTMLDivElement>(null);
 
@@ -70,29 +71,39 @@ export default function MotionLayer() {
     let pending: HTMLElement[] = [];
     let ticking = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
-    const show = (element: HTMLElement) => {
+    let lastY = window.scrollY, lastT = performance.now(), speed = 0;
+    const settle = (element: HTMLElement) => {
+      delete element.dataset.m; delete element.dataset.kind; delete element.dataset.dir;
+      element.style.removeProperty("--m-delay");
+    };
+    const show = (element: HTMLElement, instant: boolean) => {
+      // Already scrolled past, or the reader is flicking fast: show it now rather than make them wait.
+      if (instant) { settle(element); return; }
       const siblings = element.parentElement ? Array.from(element.parentElement.children) : [];
       const index = Math.max(0, siblings.indexOf(element));
-      const nested = element.parentElement?.closest("[data-m]") ? 160 : 0;
-      element.style.setProperty("--m-delay", `${nested + Math.min(index * 85, 510)}ms`);
+      const nested = element.parentElement?.closest("[data-m]") ? 50 : 0;
+      element.style.setProperty("--m-delay", `${nested + Math.min(index * 40, 160)}ms`);
       element.dataset.m = "in";
-      timers.push(setTimeout(() => {
-        delete element.dataset.m; delete element.dataset.kind; delete element.dataset.dir;
-        element.style.removeProperty("--m-delay");
-      }, 2000));
+      timers.push(setTimeout(() => settle(element), 800));
     };
     const check = () => {
       ticking = false;
-      const line = window.innerHeight * 0.88;
+      const now = performance.now();
+      speed = Math.abs(window.scrollY - lastY) / Math.max(1, now - lastT);
+      lastY = window.scrollY; lastT = now;
+      // Start revealing a little before things reach the screen, so they are in place when they arrive.
+      const line = window.innerHeight * 1.12;
+      const fast = speed > 2.5;
       pending = pending.filter(element => {
         if (!element.isConnected) return false;
-        if (element.getBoundingClientRect().top < line) { show(element); return false; }
+        const box = element.getBoundingClientRect();
+        if (box.top < line) { show(element, fast || box.bottom < window.innerHeight * 0.25); return false; }
         return true;
       });
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } };
     const frame = requestAnimationFrame(() => {
-      const fold = window.innerHeight * 0.92;
+      const fold = window.innerHeight * 1.05;
       const targets = revealTargets(document);
       pending = [];
       targets.forEach((kind, element) => {
@@ -211,10 +222,11 @@ export default function MotionLayer() {
     };
   }, []);
 
-  // Page curtain: sweeps up when an internal link is followed, lifts when the new page arrives.
+  // Page curtain: covers the screen first, then navigates, then lifts once the new page has rendered underneath.
   useEffect(() => {
     if (still()) return;
     let fallback: ReturnType<typeof setTimeout>;
+    let go: ReturnType<typeof setTimeout>;
     const onClick = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = (event.target as Element | null)?.closest?.<HTMLAnchorElement>("a[href]");
@@ -223,27 +235,33 @@ export default function MotionLayer() {
       if (url.origin !== location.origin || url.pathname === location.pathname) return;
       const element = curtain.current;
       if (!element) return;
+      // Hold the navigation until the curtain is fully down, so the new page never shows through a half-drawn curtain.
+      event.preventDefault();
       coveredAt = performance.now();
       element.dataset.state = "cover";
-      clearTimeout(fallback);
-      fallback = setTimeout(() => { element.dataset.state = "lift"; }, 2500);
+      clearTimeout(go); clearTimeout(fallback);
+      go = setTimeout(() => router.push(url.pathname + url.search + url.hash), 260);
+      fallback = setTimeout(() => { if (coveredAt && element.dataset.state !== "" && element.dataset.state !== "lift") { coveredAt = 0; element.dataset.state = "lift"; } }, 2500);
     };
     document.addEventListener("click", onClick, true);
-    return () => { document.removeEventListener("click", onClick, true); clearTimeout(fallback); };
-  }, []);
+    return () => { document.removeEventListener("click", onClick, true); clearTimeout(fallback); clearTimeout(go); };
+  }, [router]);
 
   useEffect(() => {
+    // A new page starts with a plain cursor ring, not the hover state left over from the link that was clicked.
+    if (cursor.current) cursor.current.dataset.state = "";
     const element = curtain.current;
     const elapsed = performance.now() - coveredAt;
     if (!element || !coveredAt || elapsed > 3000) return;
     if (element.dataset.state !== "cover") element.dataset.state = "hold";
-    const lift = setTimeout(() => { coveredAt = 0; element.dataset.state = "lift"; window.scrollTo(0, 0); }, Math.max(0, 380 - elapsed));
+    if (!location.hash) window.scrollTo(0, 0);
+    const lift = setTimeout(() => { coveredAt = 0; element.dataset.state = "lift"; }, Math.max(60, 260 - elapsed));
     return () => clearTimeout(lift);
   }, [pathname]);
 
   return (
     <>
-      <div ref={curtain} className="lodgely-curtain" aria-hidden="true" onAnimationEnd={event => { if (event.currentTarget.dataset.state === "lift") event.currentTarget.dataset.state = ""; }}>
+      <div ref={curtain} className="lodgely-curtain" aria-hidden="true" onAnimationEnd={event => { if (event.target === event.currentTarget && event.currentTarget.dataset.state === "lift") event.currentTarget.dataset.state = ""; }}>
         <span className="lodgely-curtain-mark"><Logo tone="light" height={72} alt="" /></span>
       </div>
       <div ref={cursor} className="lodgely-halo" aria-hidden="true" hidden />

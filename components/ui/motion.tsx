@@ -11,11 +11,11 @@ export function Reveal({ children, className = "", delay = 0, as: Tag = "div", i
     if (!element) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { element.dataset.visible = "true"; observer.disconnect(); }
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px 12% 0px" });
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  return <Tag ref={ref} id={id} data-reveal="" className={`${styles.reveal} ${className}`} style={{ "--delay": `${delay}ms` } as CSSProperties}>{children}</Tag>;
+  return <Tag ref={ref} id={id} data-reveal="" className={`${styles.reveal} ${className}`} style={{ "--delay": `${Math.min(delay, 180)}ms` } as CSSProperties}>{children}</Tag>;
 }
 
 /** Tracks the pointer so `.spotlight` / `.tilt` styles can follow it. */
