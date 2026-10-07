@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Finder, { type Filters } from "./finder";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Find Accommodation | Lodgely",
   description: "Search student accommodation, rooms, apartments, hostels and homes in Nigeria and Rwanda. Filter by city, university, budget and move-in date.",
-};
+  path: "/accommodation",
+});
 
 const one = (value: string | string[] | undefined) => (Array.isArray(value) ? value[0] : value) ?? "";
 

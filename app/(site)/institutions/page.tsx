@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, LinkCards, SectionHead } from "@/components/ui/blocks";
 import PageHero from "@/components/ui/page-hero";
@@ -6,10 +7,11 @@ import PreviewForm from "@/components/ui/preview-form";
 import kit from "@/components/ui/kit.module.css";
 import Journey from "./journey";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "For Universities & Institutions | Lodgely",
   description: "Partner with Lodgely on student housing discovery, off-campus directories, verified accommodation and student onboarding.",
-};
+  path: "/institutions",
+});
 
 export default function Institutions() {
   return (

@@ -44,8 +44,7 @@ img[data-parallax] { scale: 1.08; will-change: translate; }
 @keyframes lodgely-cover { from { translate: 0 100%; border-radius: 50% 50% 0 0 / 12vh 12vh 0 0; } to { translate: 0 0; border-radius: 0; } }
 @keyframes lodgely-lift { from { translate: 0 0; border-radius: 0; } to { translate: 0 -100%; border-radius: 0 0 50% 50% / 0 0 12vh 12vh; } }
 .lodgely-curtain-mark { display: flex; align-items: center; gap: 12px; color: #e5edc6; font-family: var(--font-bricolage-grotesque), sans-serif; font-size: clamp(34px, 6vw, 64px); font-weight: 600; letter-spacing: -.05em; opacity: 0; }
-.lodgely-curtain-mark > span { display: grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: #e5edc6; color: #124c44; font-size: .8em; }
-.lodgely-curtain-mark i { font-style: normal; color: #93a77a; margin-left: -.3em; }
+.lodgely-curtain-mark img { display: block; width: auto; height: clamp(48px, 7vw, 72px); }
 .lodgely-curtain[data-state="cover"] .lodgely-curtain-mark { animation: lodgely-mark .5s .15s cubic-bezier(.2,.8,.2,1) forwards; }
 .lodgely-curtain[data-state="lift"] .lodgely-curtain-mark { opacity: 1; animation: lodgely-mark-out .3s ease forwards; }
 @keyframes lodgely-mark { from { opacity: 0; translate: 0 20px; } to { opacity: 1; translate: 0 0; } }

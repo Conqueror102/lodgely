@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { CtaBand } from "@/components/ui/blocks";
 import PageHero from "@/components/ui/page-hero";
 import kit from "@/components/ui/kit.module.css";
 import Library from "./library";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Housing & Property Guides | Lodgely",
   description: "Practical guides on student accommodation, renting in Nigeria and Rwanda, avoiding scams, property management and property digitization.",
-};
+  path: "/guides",
+});
 
 export default function Guides() {
   return (

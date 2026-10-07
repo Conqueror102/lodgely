@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, FeatureTiles, LinkCards, SectionHead } from "@/components/ui/blocks";
 import { Reveal } from "@/components/ui/motion";
@@ -7,10 +8,11 @@ import kit from "@/components/ui/kit.module.css";
 import RedFlagQuiz from "./red-flag-quiz";
 import styles from "./trust.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Trust & Safety | Lodgely",
   description: "How verification works on Lodgely, practical safety guidance for renters, how to report a concern and which payment protections apply.",
-};
+  path: "/trust-and-safety",
+});
 
 export default function TrustAndSafety() {
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,7 +13,7 @@ export function generateStaticParams() { return guides.map(guide => ({ slug: gui
 
 export async function generateMetadata({ params }: PageProps<"/guides/[slug]">): Promise<Metadata> {
   const guide = getGuide((await params).slug);
-  return guide ? { title: `${guide.title} | Lodgely Guides`, description: guide.excerpt } : {};
+  return guide ? seo({ title: `${guide.title} | Lodgely Guides`, description: guide.excerpt, path: `/guides/${guide.slug}` }) : {};
 }
 
 export default async function GuidePage({ params }: PageProps<"/guides/[slug]">) {

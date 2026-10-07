@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getLegalPage, legalPages } from "@/data/legal";
 import LegalShell from "../legal-shell";
@@ -9,7 +10,7 @@ export function generateStaticParams() { return legalPages.map(page => ({ slug: 
 
 export async function generateMetadata({ params }: PageProps<"/legal/[slug]">): Promise<Metadata> {
   const page = getLegalPage((await params).slug);
-  return page ? { title: `${page.title} | Lodgely`, description: page.summary, robots: { index: false } } : {};
+  return page ? seo({ title: `${page.title} | Lodgely`, description: page.summary, path: `/legal/${page.slug}`, noindex: true }) : {};
 }
 
 export default async function LegalPage({ params }: PageProps<"/legal/[slug]">) {

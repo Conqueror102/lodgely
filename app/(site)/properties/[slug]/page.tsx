@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Icon from "@/components/ui/icon";
@@ -19,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/properties/[slug]">): Promise<Metadata> {
   const listing = getListing((await params).slug);
   if (!listing) return {};
-  return { title: `${listing.title} | Lodgely`, description: listing.summary, robots: { index: false } };
+  return seo({ title: `${listing.title} | Lodgely`, description: listing.summary, path: `/properties/${listing.slug}`, noindex: true });
 }
 
 const amenityIcon = (amenity: string) => /wi-?fi|internet/i.test(amenity) ? "cloud" : /water/i.test(amenity) ? "settings" : /secur/i.test(amenity) ? "shield" : /desk|reading/i.test(amenity) ? "student-center" : /bed|wardrobe/i.test(amenity) ? "bed" : /kitchen|breakfast/i.test(amenity) ? "home" : /meter|power|air/i.test(amenity) ? "settings" : /parking|garden|balcony/i.test(amenity) ? "location" : "checkmark";

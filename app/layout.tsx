@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { shareImage, siteDescription, siteName, siteUrl } from "@/lib/seo";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -32,8 +33,19 @@ const varelaRound = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Lodgely | Student Accommodation & Property Platform in Africa",
-  description: "Find student accommodation, rooms, apartments and rental properties in Lodgely markets. Connect with property owners, agents and institutions.",
+  metadataBase: new URL(siteUrl),
+  title: { default: "Lodgely | Student Accommodation & Property Platform in Africa", template: "%s" },
+  description: siteDescription,
+  applicationName: siteName,
+  keywords: ["student accommodation", "student housing", "rooms for rent", "apartments", "hostels", "Nigeria", "Rwanda", "Lagos", "Kigali", "property listing", "landlords", "property agents"],
+  openGraph: { siteName, type: "website", locale: "en_NG", url: "/", images: [shareImage] },
+  twitter: { card: "summary_large_image", images: [shareImage.url] },
+  formatDetection: { telephone: false },
+  category: "real estate",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#124c44",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

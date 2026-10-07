@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
+import Logo from "@/components/ui/logo";
 import QuickJump from "@/components/layout/quick-jump";
 import MotionLayer from "@/components/layout/motion-layer";
 import { navGroups } from "@/data/site-map";
@@ -58,7 +59,7 @@ export default function SiteHeader() {
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${open ? styles.menuOpen : ""}`} onPointerLeave={hide} onPointerEnter={() => clearTimeout(closeTimer.current)}>
         <div className={styles.bar}>
-          <Link className={styles.brand} href="/" aria-label="Lodgely home"><span>L</span>Lodgely<span className={styles.dot}>.</span></Link>
+          <Link className={styles.brand} href="/" aria-label="Lodgely home"><Logo priority alt="" /></Link>
           <nav className={styles.nav} aria-label="Main navigation">
             {navGroups.map(group => (
               <button key={group.id} className={`${styles.trigger} ${groupActive(group.id) ? styles.current : ""}`} aria-expanded={open === group.id} aria-controls="mega-panel"

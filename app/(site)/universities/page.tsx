@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, LinkCards, Notice, SectionHead } from "@/components/ui/blocks";
 import PageHero from "@/components/ui/page-hero";
 import kit from "@/components/ui/kit.module.css";
 import { countries, universitiesIn } from "@/data/places";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Accommodation Near Your University | Lodgely",
   description: "Find student accommodation near University of Lagos, University of Ibadan, University of Abuja, University of Rwanda and African Leadership University.",
-};
+  path: "/universities",
+});
 
 export default function Universities() {
   return (

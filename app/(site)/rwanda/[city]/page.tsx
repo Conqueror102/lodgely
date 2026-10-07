@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { citiesIn, getCity } from "@/data/places";
 import CityView from "../../_places/city-view";
@@ -11,7 +12,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/rwanda/[city]">): Promise<Metadata> {
   const city = getCity("rwanda", (await params).city);
-  return city ? { title: `Accommodation in ${city.name}, Rwanda | Lodgely`, description: city.intro } : {};
+  return city ? seo({ title: `Accommodation in ${city.name}, Rwanda | Lodgely`, description: city.intro, path: `/rwanda/${city.slug}` }) : {};
 }
 
 export default async function CityPage({ params }: PageProps<"/rwanda/[city]">) {

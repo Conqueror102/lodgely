@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
+import Logo from "@/components/ui/logo";
 import "@/components/layout/motion-layer.css";
 
 const ease = "cubic-bezier(.2,.8,.2,1)";
@@ -243,7 +244,7 @@ export default function MotionLayer() {
   return (
     <>
       <div ref={curtain} className="lodgely-curtain" aria-hidden="true" onAnimationEnd={event => { if (event.currentTarget.dataset.state === "lift") event.currentTarget.dataset.state = ""; }}>
-        <span className="lodgely-curtain-mark"><span>L</span>Lodgely<i>.</i></span>
+        <span className="lodgely-curtain-mark"><Logo tone="light" height={72} alt="" /></span>
       </div>
       <div ref={cursor} className="lodgely-halo" aria-hidden="true" hidden />
     </>

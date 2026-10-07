@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, SectionHead } from "@/components/ui/blocks";
 import Marquee from "@/components/ui/marquee";
@@ -8,10 +9,11 @@ import kit from "@/components/ui/kit.module.css";
 import FlipCards from "./flip-cards";
 import styles from "./about.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "About Lodgely | Digital Accommodation & Property Infrastructure for Africa",
   description: "Lodgely is building digital accommodation and property infrastructure for Africa, starting in Nigeria and Rwanda.",
-};
+  path: "/about",
+});
 
 const roadmap = [
   { lane: "Focus now", tone: "now", items: ["Accommodation discovery", "Student housing search", "Property listing applications"] },

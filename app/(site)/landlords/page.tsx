@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { CtaBand, Faqs, FeatureTiles, SectionHead } from "@/components/ui/blocks";
@@ -8,10 +9,11 @@ import kit from "@/components/ui/kit.module.css";
 import ProfileBuilder from "./profile-builder";
 import styles from "./landlords.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "For Property Owners & Landlords | Lodgely",
   description: "List your property on Lodgely, reach students and renters, and manage listings, enquiries, documentation and occupancy with digital tools.",
-};
+  path: "/landlords",
+});
 
 export default function Landlords() {
   return (

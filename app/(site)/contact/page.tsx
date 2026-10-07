@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { LinkCards, SectionHead } from "@/components/ui/blocks";
 import PageHero from "@/components/ui/page-hero";
 import kit from "@/components/ui/kit.module.css";
 import ContactTabs from "./contact-tabs";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Contact & Partnerships | Lodgely",
   description: "Get in touch with Lodgely for general enquiries, support, partnerships or to report a concern about a listing.",
-};
+  path: "/contact",
+});
 
 export default function Contact() {
   return (

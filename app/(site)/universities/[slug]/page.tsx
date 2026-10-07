@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Icon from "@/components/ui/icon";
@@ -16,7 +17,7 @@ export function generateStaticParams() { return universities.map(university => (
 
 export async function generateMetadata({ params }: PageProps<"/universities/[slug]">): Promise<Metadata> {
   const university = getUniversity((await params).slug);
-  return university ? { title: `${university.name} Accommodation | Lodgely`, description: `Find student accommodation near ${university.name} (${university.short}). ${university.intro}` } : {};
+  return university ? seo({ title: `${university.name} Accommodation | Lodgely`, description: `Find student accommodation near ${university.name} (${university.short}). ${university.intro}`, path: `/universities/${university.slug}` }) : {};
 }
 
 export default async function UniversityPage({ params }: PageProps<"/universities/[slug]">) {

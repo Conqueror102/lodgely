@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, Faqs, FeatureTiles, LinkCards, SectionHead } from "@/components/ui/blocks";
 import Marquee from "@/components/ui/marquee";
@@ -6,10 +7,11 @@ import PageHero from "@/components/ui/page-hero";
 import kit from "@/components/ui/kit.module.css";
 import CampusPicker from "./campus-picker";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Student Accommodation in Nigeria & Rwanda | Lodgely",
   description: "Find student rooms, hostels, apartments and off-campus housing near universities in Nigeria and Rwanda. Search by university, budget and property type.",
-};
+  path: "/accommodation/student-accommodation",
+});
 
 export default function StudentAccommodation() {
   return (

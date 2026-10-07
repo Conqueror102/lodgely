@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { CtaBand, FeatureTiles, SectionHead } from "@/components/ui/blocks";
 import { Reveal } from "@/components/ui/motion";
@@ -8,10 +9,11 @@ import kit from "@/components/ui/kit.module.css";
 import LeadBoard from "./lead-board";
 import styles from "./agents.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "For Property Agents | Lodgely",
   description: "Grow your agency with Lodgely. Digitize listings, manage leads, communicate with clients and complete agent verification.",
-};
+  path: "/agents",
+});
 
 export default function Agents() {
   return (

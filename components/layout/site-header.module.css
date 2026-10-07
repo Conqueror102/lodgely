@@ -3,8 +3,8 @@
 .scrolled .bar { background: #fbfcf6e6; box-shadow: 0 14px 40px #124c4414; }
 .menuOpen .bar { border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: #fbfcf6; }
 .brand { display: flex; align-items: center; gap: 9px; font-family: var(--font-bricolage-grotesque), sans-serif; font-size: 27px; font-weight: 600; letter-spacing: -.05em; flex: none; }
-.brand > span:first-child { display: grid; place-items: center; width: 37px; height: 37px; background: var(--brand); color: #e5edc6; border-radius: 50%; font-size: 22px; transition: transform .4s; }
-.brand:hover > span:first-child { transform: rotate(-12deg) scale(1.05); }
+.brand img { display: block; width: auto; height: 36px; transition: transform .4s cubic-bezier(.2,.8,.2,1); transform-origin: 16% 50%; }
+.brand:hover img { transform: rotate(-4deg) scale(1.04); }
 .dot { color: #93a77a; margin-left: -9px; }
 .nav { display: flex; align-items: center; gap: 4px; }
 .trigger { display: flex; align-items: center; gap: 8px; padding: 11px 15px; border: 0; border-radius: 100px; background: transparent; color: inherit; font-size: 13px; transition: background .2s; }
@@ -70,7 +70,7 @@
   .menuButton { display: flex; }
   .jump { display: flex; }
   .bar { min-height: 64px; padding: 0 10px 0 16px; }
-  .brand { font-size: 24px; } .brand > span:first-child { width: 33px; height: 33px; font-size: 20px; }
+  .brand img { height: 31px; }
   .header { z-index: 60; }
 }
 @media (prefers-reduced-motion: reduce) { .mega, .megaLinks li, .sheet, .sheet section { animation: none; } }

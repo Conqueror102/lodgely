@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import Wizard from "./wizard";
 import styles from "./wizard.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "List Your Property | Lodgely",
   description: "List your property on Lodgely in a few guided steps: property details, location, photos, amenities, pricing and your details.",
-};
+  path: "/list-your-property",
+});
 
 export default function ListYourProperty() {
   return (

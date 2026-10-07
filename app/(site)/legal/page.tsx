@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
 import { legalPages } from "@/data/legal";
 import LegalShell from "./legal-shell";
 import styles from "./legal.module.css";
 
-export const metadata: Metadata = { title: "Legal | Lodgely", description: "Lodgely's terms, privacy, cookie, KYC, property verification and refund policies, and disclaimer." };
+export const metadata: Metadata = seo({ title: "Legal | Lodgely", description: "Lodgely's terms, privacy, cookie, KYC, property verification and refund policies, and disclaimer.", path: "/legal" });
 
 export default function Legal() {
   return (
