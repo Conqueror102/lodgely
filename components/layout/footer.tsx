@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer} id="footer">
       <div className={styles.navigation}>
-        <div className={styles.brand}><Link href="/" aria-label="Lodgely home"><Logo tone="light" height={40} alt="" /></Link><p>Digital accommodation and property<br />infrastructure for Africa.</p><span className={styles.signoff}>Real places. Real possibilities.</span></div>
+        <div className={styles.brand}><Link href="/" aria-label="Lodgely home"><Logo tone="light" height={40} alt="" /></Link><p>Digital accommodation and property<br />infrastructure for Africa.</p><span className={styles.signoff}>Search. Find. Lodge.</span></div>
         <nav aria-label="Footer accommodation"><h3><Icon name="home" />Find your place</h3><Link href="/accommodation">Find accommodation</Link><Link href="/accommodation/student-accommodation">Student accommodation</Link><Link href="/universities">Universities</Link><Link href="/nigeria">Nigeria</Link><Link href="/rwanda">Rwanda</Link></nav>
         <nav aria-label="Footer partners"><h3><Icon name="handshake" />Build with us</h3><Link href="/landlords">Property owners</Link><Link href="/list-your-property">List your property</Link><Link href="/agents">Property agents</Link><Link href="/institutions">Universities & institutions</Link><Link href="/contact">Partnerships</Link></nav>
         <nav aria-label="Footer resources"><h3><Icon name="help" />A little guidance</h3><Link href="/guides">Housing guides</Link><Link href="/trust-and-safety">Trust & safety</Link><Link href="/about">About Lodgely</Link><Link href="/contact">Contact</Link><Link href="/#faq">FAQs</Link></nav>

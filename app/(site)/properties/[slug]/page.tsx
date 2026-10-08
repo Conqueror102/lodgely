@@ -103,7 +103,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
 
           <Reveal as="section" className={styles.safety}>
             <Icon name="shield" size={30} />
-            <div><strong>Before you pay anything</strong><p>Confirm who owns the property, inspect it, and make sure you know who receives each payment. {country.tips[1].copy}</p></div>
+            <div><strong>Before you pay anything</strong><p>Do well to verify the amenities, conditions, prices, availability on the platform before booking/making payment. You can chat with a support team for further information or verification.</p></div>
             <Link href="/trust-and-safety">Safety guide ↗</Link>
           </Reveal>
         </div>
